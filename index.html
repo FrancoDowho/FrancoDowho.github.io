@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Franco Dowhopolyj — Game Programmer</title>
+  <meta name="description" content="Game programmer portfolio — gameplay systems, tools and optimization." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ===================== TOOLBAR ===================== -->
+    <header class="toolbar">
+      <button class="toolbar__menu" id="menuToggle" aria-label="Toggle hierarchy panel" aria-expanded="false" aria-controls="hierarchy">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="toolbar__brand">
+        <span class="toolbar__dot" aria-hidden="true"></span>
+        <span class="toolbar__brand-text">portfolio<span class="toolbar__brand-ext">.scene</span></span>
+      </div>
+
+      <div class="toolbar__controls" role="group" aria-label="Decorative playback controls">
+        <button class="toolbar__btn" data-tool-btn="play" aria-label="Play" title="Play">
+          <svg viewBox="0 0 16 16" width="12" height="12"><polygon points="3,2 14,8 3,14" fill="currentColor"/></svg>
+        </button>
+        <button class="toolbar__btn is-active" data-tool-btn="pause" aria-label="Pause" title="Pause">
+          <svg viewBox="0 0 16 16" width="12" height="12"><rect x="3" y="2" width="3.5" height="12" fill="currentColor"/><rect x="9.5" y="2" width="3.5" height="12" fill="currentColor"/></svg>
+        </button>
+        <button class="toolbar__btn" data-tool-btn="stop" aria-label="Stop" title="Stop">
+          <svg viewBox="0 0 16 16" width="12" height="12"><rect x="3" y="3" width="10" height="10" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace">
+
+      <!-- ===================== HIERARCHY (NAV) ===================== -->
+      <nav class="hierarchy" id="hierarchy" aria-label="Section navigation">
+        <div class="hierarchy__panel-title">Hierarchy</div>
+
+        <div class="hierarchy__root">
+          <div class="hierarchy__avatar">
+            <img src="assets/profile.jpeg" alt="Franco Dowhopolyj">
+          </div>
+          <div class="hierarchy__root-text">
+            <span class="hierarchy__root-name">Franco Dowhopolyj</span>
+            <span class="hierarchy__root-tag">GameObject</span>
+          </div>
+        </div>
+
+        <ul class="hierarchy__list">
+          <li>
+            <button class="hierarchy__item is-active" data-target="about">
+              <span class="hierarchy__icon hierarchy__icon--about" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="11" x2="12" y2="16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.5" r="1.1" fill="currentColor"/></svg>
+              </span>
+              About
+            </button>
+          </li>
+          <li>
+            <button class="hierarchy__item" data-target="experience">
+              <span class="hierarchy__icon hierarchy__icon--experience" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14"><rect x="3.5" y="8" width="17" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+              </span>
+              Experience
+            </button>
+          </li>
+          <li>
+            <button class="hierarchy__item" data-target="projects">
+              <span class="hierarchy__icon hierarchy__icon--projects" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14"><polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><line x1="12" y1="12" x2="20" y2="7.5" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="12" x2="4" y2="7.5" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="12" x2="12" y2="21" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+              Projects
+            </button>
+          </li>
+          <li>
+            <button class="hierarchy__item" data-target="education">
+              <span class="hierarchy__icon hierarchy__icon--education" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14"><polygon points="12,4 21,8.5 12,13 3,8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 10.5V15c0 1.3 2.2 2.5 5 2.5s5-1.2 5-2.5v-4.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+              </span>
+              Education
+            </button>
+          </li>
+          <li>
+            <button class="hierarchy__item" data-target="skills">
+              <span class="hierarchy__icon hierarchy__icon--skills" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14"><line x1="5" y1="20" x2="5" y2="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="20" x2="12" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="19" y1="20" x2="19" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              Skills
+            </button>
+          </li>
+          <li>
+            <button class="hierarchy__item" data-target="interests">
+              <span class="hierarchy__icon hierarchy__icon--interests" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 20.5s-7.5-4.6-9.7-9C.8 8 2.3 4.5 6 4c2.2-.3 4.3 1 6 3 1.7-2 3.8-3.3 6-3 3.7.5 5.2 4 3.7 7.5-2.2 4.4-9.7 9-9.7 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </span>
+              Interests
+            </button>
+          </li>
+          <li>
+            <button class="hierarchy__item" data-target="youtube">
+              <span class="hierarchy__icon hierarchy__icon--youtube" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><polygon points="10,9 10,15 15,12" fill="currentColor"/></svg>
+              </span>
+              OSTs
+            </button>
+          </li>
+        </ul>
+
+        <div class="hierarchy__footer">
+          <a class="hierarchy__social" href="https://www.linkedin.com/in/franco-nicol%C3%A1s-dowhopolyj-44ba083a3/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4zM8.5 8h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.66 4.78 6.12V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.66 1.8-2.66 3.65V23h-4z"/></svg>
+          </a>
+          <a class="hierarchy__social" href="https://github.com/FrancoDowho" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 .5C5.7.5.8 5.4.8 11.7c0 5 3.2 9.2 7.7 10.7.6.1.8-.2.8-.6v-2.2c-3.1.7-3.8-1.5-3.8-1.5-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.6.1-.6 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 1.1.9-.2 1.8-.4 2.8-.4s1.9.1 2.8.4c2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.3.8 1 .8 2v3c0 .4.2.7.8.6 4.5-1.5 7.7-5.7 7.7-10.7C23.2 5.4 18.3.5 12 .5z"/></svg>
+          </a>
+          <a class="hierarchy__social" href="mailto:franco.dowho@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" width="14" height="14"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </nav>
+
+      <div class="hierarchy__overlay" id="hierarchyOverlay"></div>
+
+      <!-- ===================== INSPECTOR (MAIN CONTENT) ===================== -->
+      <main class="inspector" id="inspector">
+
+        <!-- ABOUT -->
+        <section id="about" class="component">
+          <div class="component__header">
+            <span class="component__checkbox" aria-hidden="true"></span>
+            <span class="component__icon component__icon--about" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="11" x2="12" y2="16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.5" r="1.1" fill="currentColor"/></svg>
+            </span>
+            <span class="component__title">PlayerProfile<span class="component__ext">.cs</span></span>
+          </div>
+          <div class="component__body about">
+            <div class="about__photo">
+              <img src="assets/profile.jpeg" alt="Franco Nicolás Dowhopolyj">
+            </div>
+            <div class="about__content">
+              <h1 class="about__name">Franco Nicolás Dowhopolyj</h1>
+              <p class="about__role">Video Game Development &amp; Design Student <span class="dot-sep">·</span> Unity / C#</p>
+
+              <dl class="about__fields">
+                <div class="about__field">
+                  <dt>location</dt><dd>Buenos Aires, Argentina</dd>
+                </div>
+                <div class="about__field">
+                  <dt>phone</dt><dd>+011 5933-9771</dd>
+                </div>
+                <div class="about__field">
+                  <dt>email</dt><dd><a href="mailto:franco.dowho@gmail.com">franco.dowho@gmail.com</a></dd>
+                </div>
+                <div class="about__field">
+                  <dt>english</dt><dd>Intermediate</dd>
+                </div>
+              </dl>
+
+              <p class="about__bio">
+                Video game development student looking for my first role as a junior programmer,
+                where I can grow building menus, algorithm models, GOAP-based behaviors, and
+                pattern-based architecture, while working on gameplay and feedback systems.
+                My main engine is Unity, with 3+ years of experience (from the 2022 versions
+                through Unity 6), and my primary language is C#.
+              </p>
+
+              <div class="about__qualities">
+                <span class="tag tag--soft">Fast learner</span>
+                <span class="tag tag--soft">Team communicator</span>
+                <span class="tag tag--soft">Full-time availability</span>
+                <span class="tag tag--soft">Clean code organization</span>
+                <span class="tag tag--soft">Proactive</span>
+              </div>
+
+              <div class="about__reel">
+                <div class="about__reel-frame">
+                  <svg viewBox="0 0 16 16" width="28" height="28"><polygon points="4,2.5 14,8 4,13.5" fill="currentColor"/></svg>
+                  <span>Drop your demo reel embed here</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="component">
+          <div class="component__header">
+            <span class="component__checkbox" aria-hidden="true"></span>
+            <span class="component__icon component__icon--experience" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14"><rect x="3.5" y="8" width="17" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <span class="component__title">ExperienceLog<span class="component__ext">.cs</span></span>
+          </div>
+          <div class="component__body">
+            <ul class="entry-list">
+              <li class="entry-card">
+                <div class="entry-card__top">
+                  <h3 class="entry-card__title">Game Developer</h3>
+                  <span class="entry-card__date">Month Year — Present</span>
+                </div>
+                <a class="entry-card__org" href="#">Studio Name</a>
+                <p class="entry-card__desc">Describe what you build day to day: systems, tools or mechanics you own, and how you coordinate with the rest of the team.</p>
+              </li>
+              <li class="entry-card">
+                <div class="entry-card__top">
+                  <h3 class="entry-card__title">Gameplay Programmer</h3>
+                  <span class="entry-card__date">Month Year — Month Year</span>
+                </div>
+                <a class="entry-card__org" href="#">Studio Name</a>
+                <p class="entry-card__desc">Second role placeholder. Swap in real responsibilities: prototyping, optimization, tooling, or engine work.</p>
+              </li>
+              <li class="entry-card">
+                <div class="entry-card__top">
+                  <h3 class="entry-card__title">Junior Programmer</h3>
+                  <span class="entry-card__date">Month Year — Month Year</span>
+                </div>
+                <a class="entry-card__org" href="#">Studio Name</a>
+                <p class="entry-card__desc">Third role placeholder — delete or duplicate this card to match your real history.</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="component">
+          <div class="component__header">
+            <span class="component__checkbox" aria-hidden="true"></span>
+            <span class="component__icon component__icon--projects" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14"><polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="component__title">Projects<span class="component__ext">/</span></span>
+          </div>
+          <div class="component__body">
+            <div class="project-grid">
+              <article class="project-card">
+                <div class="project-card__thumb">
+                  <svg viewBox="0 0 24 24" width="24" height="24"><rect x="3" y="4" width="18" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><polygon points="8,9 8,15 14,12" fill="currentColor"/></svg>
+                  <span>Project thumbnail / gif</span>
+                </div>
+                <h3 class="project-card__title">Mad Clash</h3>
+                <div class="project-card__tags">
+                  <span class="tag">Construct 2</span><span class="tag">Level Design</span><span class="tag">Art &amp; Animation</span>
+                </div>
+                <p class="project-card__desc">Built in Construct 2. I handled all the programming, level design, and most of the art and animations.</p>
+                <div class="project-card__links">
+                  <a href="https://escueladavinci.itch.io/mad-clash" target="_blank" rel="noopener">Play</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" class="component">
+          <div class="component__header">
+            <span class="component__checkbox" aria-hidden="true"></span>
+            <span class="component__icon component__icon--education" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14"><polygon points="12,4 21,8.5 12,13 3,8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="component__title">Education<span class="component__ext">.cs</span></span>
+          </div>
+          <div class="component__body">
+            <ul class="entry-list">
+              <li class="entry-card entry-card--with-logo">
+                <img class="entry-card__logo" src="assets/Sarmi.png" alt="Escuela Modelo Sarmiento logo">
+                <div class="entry-card__content">
+                  <div class="entry-card__top">
+                    <h3 class="entry-card__title">Secondary degree</h3>
+                    <span class="entry-card__date">2016 — 2020</span>
+                  </div>
+                  <a class="entry-card__org" href="#">Escuela Modelo Sarmiento</a>
+                </div>
+              </li>
+              <li class="entry-card entry-card--with-logo">
+                <img class="entry-card__logo" src="assets/Davinci.jpg" alt="Da Vinci University logo">
+                <div class="entry-card__content">
+                  <div class="entry-card__top">
+                    <h3 class="entry-card__title">Post-secondary institution</h3>
+                    <span class="entry-card__date">March 2022 - expected December 2026</span>
+                  </div>
+                  <a class="entry-card__org" href="#">Game Design and Programming - Da Vinci University of Multimedia Art</a>
+                </div>
+              </li>
+              <li class="entry-card">
+                <div class="entry-card__top">
+                  <h3 class="entry-card__title">Advanced Photoshop</h3>
+                  <span class="entry-card__date">2019</span>
+                </div>
+                <a class="entry-card__org" href="#">UTN Buenos Aires</a>
+              </li>
+              <li class="entry-card">
+                <div class="entry-card__top">
+                  <h3 class="entry-card__title">PowerPoint</h3>
+                  <span class="entry-card__date">2017</span>
+                </div>
+                <a class="entry-card__org" href="#">UTN Buenos Aires</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="component">
+          <div class="component__header">
+            <span class="component__checkbox" aria-hidden="true"></span>
+            <span class="component__icon component__icon--skills" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14"><line x1="5" y1="20" x2="5" y2="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="20" x2="12" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="19" y1="20" x2="19" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <span class="component__title">Skills<span class="component__ext">.cs</span></span>
+          </div>
+          <div class="component__body">
+
+            <p class="skills__label">Programming Languages &amp; Tools</p>
+            <div class="skill-icons">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20"><polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                <span>Unity</span>
+              </div>
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>C#</span>
+              </div>
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="6" cy="6" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="18" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="12" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6 8.3V15.7M8 6.3c4 0 5 1.5 5 3.5v0" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+                <span>Git / GitHub</span>
+              </div>
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20"><rect x="3.5" y="3.5" width="17" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="9.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 17.5l5-5 3.5 3.5 3-3 3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span>Photoshop</span>
+              </div>
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20"><polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><line x1="12" y1="12" x2="20" y2="7.5" stroke="currentColor" stroke-width="1.3"/><line x1="12" y1="12" x2="4" y2="7.5" stroke="currentColor" stroke-width="1.3"/><line x1="12" y1="12" x2="12" y2="21" stroke="currentColor" stroke-width="1.3"/></svg>
+                <span>Maya</span>
+              </div>
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20"><line x1="4" y1="19" x2="4" y2="9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="9" y1="19" x2="9" y2="4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="19" x2="14" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="19" y1="19" x2="19" y2="7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <span>FL Studio</span>
+              </div>
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20"><rect x="3" y="5" width="14" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><polygon points="8.5,9.5 8.5,14.5 13,12" fill="currentColor"/><path d="M17 9l4-2.5v11L17 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                <span>After Effects</span>
+              </div>
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20"><rect x="3.5" y="4" width="17" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 15l4-6 4 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><line x1="12" y1="9" x2="12" y2="15" stroke="currentColor" stroke-width="1.7"/></svg>
+                <span>Media Encoder</span>
+              </div>
+            </div>
+
+            <p class="skills__label skills__label--spaced">Specialization in Game Development</p>
+            <ul class="specialization-list">
+              <li>
+                <svg viewBox="0 0 24 24" width="15" height="15"><polyline points="4,12.5 9,17.5 20,5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Replace this with your first specialization
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" width="15" height="15"><polyline points="4,12.5 9,17.5 20,5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Replace this with your second specialization
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" width="15" height="15"><polyline points="4,12.5 9,17.5 20,5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Replace this with your third specialization
+              </li>
+            </ul>
+
+          </div>
+        </section>
+
+        <!-- INTERESTS -->
+        <section id="interests" class="component">
+          <div class="component__header">
+            <span class="component__checkbox" aria-hidden="true"></span>
+            <span class="component__icon component__icon--interests" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 20.5s-7.5-4.6-9.7-9C.8 8 2.3 4.5 6 4c2.2-.3 4.3 1 6 3 1.7-2 3.8-3.3 6-3 3.7.5 5.2 4 3.7 7.5-2.2 4.4-9.7 9-9.7 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="component__title">Interests<span class="component__ext">.cs</span></span>
+          </div>
+          <div class="component__body">
+            <p class="interests__text">
+              Besides programming and designing video games, I enjoy working out and playing
+              roguelikes, cozy games, and co-op multiplayer games with friends. My main hobby,
+              though, has been making OSTs for other game projects since I was 13 years old,
+              on my YouTube channel <strong>FRANDERMAN123</strong>.
+            </p>
+          </div>
+        </section>
+
+        <!-- YOUTUBE / OSTs -->
+        <section id="youtube" class="component">
+          <div class="component__header">
+            <span class="component__checkbox" aria-hidden="true"></span>
+            <span class="component__icon component__icon--youtube" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><polygon points="10,9 10,15 15,12" fill="currentColor"/></svg>
+            </span>
+            <span class="component__title">OriginalSoundtracks<span class="component__ext">.cs</span></span>
+          </div>
+          <div class="component__body">
+            <div class="youtube-grid">
+              <article class="youtube-card">
+                <a class="youtube-card__thumb" href="https://www.youtube.com/watch?v=kMHprXA1ED0" target="_blank" rel="noopener">
+                  <img src="https://img.youtube.com/vi/kMHprXA1ED0/hqdefault.jpg" alt="Electro swing track for an FNF mod">
+                  <span class="youtube-card__play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22"><polygon points="9,7 9,17 18,12" fill="currentColor"/></svg>
+                  </span>
+                </a>
+                <h3 class="youtube-card__title">Electro Swing — FNF Mod</h3>
+                <p class="youtube-card__desc">Original track and video edit made by me for a Friday Night Funkin' mod.</p>
+              </article>
+
+              <article class="youtube-card">
+                <a class="youtube-card__thumb" href="https://www.youtube.com/watch?v=1RvZonuFhcE" target="_blank" rel="noopener">
+                  <img src="https://img.youtube.com/vi/1RvZonuFhcE/hqdefault.jpg" alt="Rock and synths fan track for Undertale">
+                  <span class="youtube-card__play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22"><polygon points="9,7 9,17 18,12" fill="currentColor"/></svg>
+                  </span>
+                </a>
+                <h3 class="youtube-card__title">Rock / Synths — Undertale Fan Track</h3>
+                <p class="youtube-card__desc">Heavy fan-made track (rock + synths) for Undertale. Song and video edit made by me.</p>
+              </article>
+
+              <article class="youtube-card">
+                <a class="youtube-card__thumb" href="https://www.youtube.com/watch?v=pns-OOAJB20" target="_blank" rel="noopener">
+                  <img src="https://img.youtube.com/vi/pns-OOAJB20/hqdefault.jpg" alt="Chill cover fan track for Horrortale">
+                  <span class="youtube-card__play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22"><polygon points="9,7 9,17 18,12" fill="currentColor"/></svg>
+                  </span>
+                </a>
+                <h3 class="youtube-card__title">Chill Cover — Horrortale Fan Track</h3>
+                <p class="youtube-card__desc">Fan-made chill cover for Horrortale. Video edit made by me.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- ===================== STATUS BAR ===================== -->
+    <footer class="statusbar">
+      <span class="statusbar__prompt" aria-hidden="true">&gt;</span>
+      <span id="statusText">Ready.</span><span class="statusbar__cursor" aria-hidden="true">_</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
